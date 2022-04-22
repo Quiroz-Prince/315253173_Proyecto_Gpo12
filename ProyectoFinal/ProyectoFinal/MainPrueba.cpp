@@ -1,3 +1,5 @@
+#include<string>
+
 #include <iostream>
 #include <cmath>
 
@@ -10,14 +12,8 @@
 // Other Libs
 #include "stb_image.h"
 
-// GLM Mathematics
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 //Load Models
 #include "SOIL2/SOIL2.h"
-
 
 // Other includes
 #include "Shader.h"
@@ -26,9 +22,20 @@
 #include "Texture.h"
 #include "modelAnim.h"
 
+
+// GLM Mathematics
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+
+
+
+
+
 // Function prototypes
-void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-void MouseCallback(GLFWwindow *window, double xPos, double yPos);
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
 void animacion();
 
@@ -59,7 +66,7 @@ GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
 
 // Keyframes
-float posX =PosIni.x, posY = PosIni.y, posZ = PosIni.z, rotRodIzq = 0;
+float posX = PosIni.x, posY = PosIni.y, posZ = PosIni.z, rotRodIzq = 0;
 
 #define MAX_FRAMES 9
 int i_max_steps = 190;
@@ -100,13 +107,13 @@ void saveFrame(void)
 {
 
 	printf("posx %f\n", posX);
-	
+
 	KeyFrame[FrameIndex].posX = posX;
 	KeyFrame[FrameIndex].posY = posY;
 	KeyFrame[FrameIndex].posZ = posZ;
-	
+
 	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	
+
 
 	FrameIndex++;
 }
@@ -127,7 +134,7 @@ void interpolation(void)
 	KeyFrame[playIndex].incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps;
 	KeyFrame[playIndex].incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
 	KeyFrame[playIndex].incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
-	
+
 	KeyFrame[playIndex].rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
 
 }
@@ -204,13 +211,13 @@ int main()
 	Model Cabeza((char*)"Models/Personaje/cabeza.obj");
 
 	//Objeto traslucido
-	Model objTras("Models/Cubo/Cube01.obj");
+	//Model objTras("Models/Cubo/Cube01.obj");
 
 	// Build and compile our shader program
 
 	//Inicialización de KeyFrames
-	
-	for(int i=0; i<MAX_FRAMES; i++)
+
+	for (int i = 0; i < MAX_FRAMES; i++)
 	{
 		KeyFrame[i].posX = 0;
 		KeyFrame[i].incX = 0;
@@ -358,13 +365,13 @@ int main()
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	// Position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 	// Normals attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)(3 * sizeof(GLfloat)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 	// Texture Coordinate attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)(6 * sizeof(GLfloat)));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 	glBindVertexArray(0);
 
@@ -375,7 +382,7 @@ int main()
 	// We only need to bind to the VBO (to link it with glVertexAttribPointer), no need to fill it; the VBO's data already contains all we need.
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	// Set the vertex attributes (only position data for the lamp))
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid *)0); // Note that we skip over the other data in our buffer object (we don't need the normals/textures, only positions).
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0); // Note that we skip over the other data in our buffer object (we don't need the normals/textures, only positions).
 	glEnableVertexAttribArray(0);
 	glBindVertexArray(0);
 
@@ -383,12 +390,12 @@ int main()
 	//SkyBox
 	GLuint skyboxVBO, skyboxVAO;
 	glGenVertexArrays(1, &skyboxVAO);
-	glGenBuffers(1,&skyboxVBO);
+	glGenBuffers(1, &skyboxVBO);
 	glBindVertexArray(skyboxVAO);
 	glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices),&skyboxVertices,GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), &skyboxVertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT,GL_FALSE, 3 * sizeof(GLfloat), (GLvoid *)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
 
 	// Load textures
 	vector<const GLchar*> faces;
@@ -398,7 +405,7 @@ int main()
 	faces.push_back("SkyBox/bottom.tga");
 	faces.push_back("SkyBox/back.tga");
 	faces.push_back("SkyBox/front.tga");
-	
+
 	GLuint cubemapTexture = TextureLoading::LoadCubemap(faces);
 
 	glm::mat4 projection = glm::perspective(camera.GetZoom(), (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT, 0.1f, 1000.0f);
@@ -525,16 +532,16 @@ int main()
 		//Carga de modelo 
 		//Personaje
 
-		
+
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
-		model = glm::translate(model,glm::vec3(posX,posY,posZ));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Torso.Draw(lightingShader);
 
-	
+
 
 		//Pierna Izq
 		view = camera.GetViewMatrix();
@@ -545,7 +552,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		PiernaDer.Draw(lightingShader);
-	//	Pie Izq
+		//	Pie Izq
 		view = camera.GetViewMatrix();
 		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -576,7 +583,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		BrazoDer.Draw(lightingShader);
 
-	//	Brazo Izquierdo
+		//	Brazo Izquierdo
 		view = camera.GetViewMatrix();
 		model = glm::mat4(1);
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
@@ -594,7 +601,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		Cabeza.Draw(lightingShader);
-	
+
 		//Traslucidez
 
 		glEnable(GL_BLEND);
@@ -604,7 +611,7 @@ int main()
 		model = glm::scale(model, glm::vec3(1.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		objTras.Draw(lightingShader);
+		//objTras.Draw(lightingShader);
 		glDisable(GL_BLEND);
 		glEnable(GL_DEPTH_TEST);
 		glBindVertexArray(0);
@@ -681,44 +688,44 @@ int main()
 void animacion()
 {
 
-		//Movimiento del personaje
+	//Movimiento del personaje
 
-		if (play)
+	if (play)
+	{
+		if (i_curr_steps >= i_max_steps) //end of animation between frames?
 		{
-			if (i_curr_steps >= i_max_steps) //end of animation between frames?
+			playIndex++;
+			if (playIndex > FrameIndex - 2)	//end of total animation?
 			{
-				playIndex++;
-				if (playIndex>FrameIndex - 2)	//end of total animation?
-				{
-					printf("termina anim\n");
-					playIndex = 0;
-					play = false;
-				}
-				else //Next frame interpolations
-				{
-					i_curr_steps = 0; //Reset counter
-									  //Interpolation
-					interpolation();
-				}
+				printf("termina anim\n");
+				playIndex = 0;
+				play = false;
 			}
-			else
+			else //Next frame interpolations
 			{
-				//Draw animation
-				posX += KeyFrame[playIndex].incX;
-				posY += KeyFrame[playIndex].incY;
-				posZ += KeyFrame[playIndex].incZ;
-
-				rotRodIzq += KeyFrame[playIndex].rotInc;
-
-				i_curr_steps++;
+				i_curr_steps = 0; //Reset counter
+								  //Interpolation
+				interpolation();
 			}
-
 		}
+		else
+		{
+			//Draw animation
+			posX += KeyFrame[playIndex].incX;
+			posY += KeyFrame[playIndex].incY;
+			posZ += KeyFrame[playIndex].incZ;
+
+			rotRodIzq += KeyFrame[playIndex].rotInc;
+
+			i_curr_steps++;
+		}
+
 	}
+}
 
 
 // Is called whenever a key is pressed/released via GLFW
-void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (keys[GLFW_KEY_L])
 	{
@@ -742,12 +749,12 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 
 	if (keys[GLFW_KEY_K])
 	{
-		if (FrameIndex<MAX_FRAMES)
+		if (FrameIndex < MAX_FRAMES)
 		{
 			saveFrame();
 		}
 
-		rot =-25.0f;//Variable que maneja el giro de la camara
+		rot = -25.0f;//Variable que maneja el giro de la camara
 
 	}
 
@@ -779,7 +786,7 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	}
 }
 
-void MouseCallback(GLFWwindow *window, double xPos, double yPos)
+void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {
 
 	if (firstMouse)
@@ -804,26 +811,26 @@ void DoMovement()
 
 	if (keys[GLFW_KEY_1])
 	{
-		
+
 		movCamera = 0.01f;//Manda una velocidad de 0.01 a la camara automatica
 
 	}
 
 	if (keys[GLFW_KEY_2])
 	{
-		if (rotRodIzq<80.0f)
+		if (rotRodIzq < 80.0f)
 			rotRodIzq += 1.0f;
-			
+
 	}
 
 	if (keys[GLFW_KEY_3])
 	{
-		if (rotRodIzq>-45)
+		if (rotRodIzq > -45)
 			rotRodIzq -= 1.0f;
-		
+
 	}
 
-	
+
 
 	//Mov Personaje
 	if (keys[GLFW_KEY_H])
