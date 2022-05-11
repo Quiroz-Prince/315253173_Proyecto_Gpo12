@@ -19,13 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Model.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="MainPrueba.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Shaders\lighting.frag" />
+    <ClCompile Include="AnimacionSencilla.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

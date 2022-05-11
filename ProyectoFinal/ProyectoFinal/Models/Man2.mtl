@@ -1,0 +1,27 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
+
+newmtl Material__1
+Ka 0.000000 0.000000 0.000000
+Kd 0.407843 0.321569 0.317647
+Ks 0.330000 0.330000 0.330000
+map_Kd Man2/Material__1.jpg
+
+newmtl hrad1
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.333333 0.227451
+Ks 0.330000 0.330000 0.330000
+map_Kd Man2/hrad1.jpg
+
+newmtl FrontColor
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.330000 0.330000 0.330000
+
+newmtl hair1
+Ka 0.000000 0.000000 0.000000
+Kd 0.501961 0.400000 0.305882
+Ks 0.330000 0.330000 0.330000
+map_Kd Man2/hair1.jpg
+
