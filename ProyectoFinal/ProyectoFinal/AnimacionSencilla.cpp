@@ -257,6 +257,9 @@ int main()
 	Model Piso((char*)"Models/Sea/Sea.obj");
 	Model Kingdom((char*)"Models/Kingdom/KingdomOBJ.obj");
 	Model Pterodactilo((char*)"Models/Pterodactilo/Pterodactilo.obj");
+	Model Cow((char*)"Models/cow/cow.obj");
+	Model Jeep((char*)"Models/Jeep/Jeep.obj");
+
 
 	//  Audio
 	PlaySound(TEXT("JP_Song.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
@@ -442,6 +445,17 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Pterodactilo.Draw(lightingShader);
 
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(8.0f,1.0f, -12.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Cow.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		/*model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(8.0f, 1.0f, -12.0f));*/
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Jeep.Draw(lightingShader);
 	
 		// Also draw the lamp object, again binding the appropriate shader
 		lampShader.Use();

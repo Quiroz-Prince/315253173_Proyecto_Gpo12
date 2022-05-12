@@ -2,9 +2,9 @@
 ## Alias OBJ Material File
 # Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
 
-newmtl D_L_Horse0
+newmtl body1
 Ka 0.000000 0.000000 0.000000
-Kd 0.388235 0.356863 0.345098
+Kd 0.349020 0.278431 0.235294
 Ks 0.330000 0.330000 0.330000
-map_Kd T_Rex/D_L_Horse0.png
+map_Kd body1.jpg
 
