@@ -1,10 +1,9 @@
-#
-## Alias OBJ Material File
-# Exported from SketchUp, (c) 2000-2012 Trimble Navigation Limited
-
-newmtl body1
-Ka 0.000000 0.000000 0.000000
-Kd 0.349020 0.278431 0.235294
-Ks 0.330000 0.330000 0.330000
+newmtl Man1:body1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
 map_Kd body1.jpg
-
+Ni 1.00
+Ks 0.33 0.33 0.33
+Ns 0.06

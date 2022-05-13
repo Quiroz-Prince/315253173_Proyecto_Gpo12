@@ -57,26 +57,7 @@ GLfloat lastY = HEIGHT / 2.0;
 bool keys[1024];
 bool firstMouse = true;
 
-																			/* Animaciones */
-
-/********MUCRCIELAGO 3 compleja***************/
-float offsetXmur3 = 0.0f;
-float offsetYmur3 = 0.0f;
-float offsetZmur3 = 0.0f;
-float posXmur3 = 0.0f;
-float posYmur3 = 0.0f;
-float posZmur3 = 0.0f;
-float anguloXmur3 = 0.0f;
-float anguloZmur3 = 0.0f;
-float anguloYmur3 = 0.0f;
-
-					//Murcielago2 
-float offsetXmur2 = 0.0f;
-float offsetZmur2 = 360.0f;
-float offsetYmur2 = 360.0f;
-float posXmur2 = 0.0f;
-float posYmur2 = 0.0f;
-float posZmur2 = 0.0f;
+		
 
 
 
@@ -282,6 +263,10 @@ int main()
 	Model MurCuerpo_M((char*)"Models/Pterodactilo/Pterodactilo_Cuerpo.obj");
 	Model ala1((char*)"Models/Pterodactilo/ala1.obj");
 	Model ala2((char*)"Models/Pterodactilo/ala1.obj");
+	Model Man1((char*)"Models/Man1/Man1.obj");
+	Model Tree((char*)"Models/Tree2/Tree2.obj");
+	Model Jeep((char*)"Models/Jeep/Jeep.obj");
+
 
 	Model Piso((char*)"Models/Piso/Piso.obj");
 
@@ -453,22 +438,87 @@ int main()
 		Pterodactilo.Draw(lightingShader);
 
 		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		model = glm::translate(model, glm::vec3(0.0f,0.5f, 25.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Man1.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.4f, 0.3f, 0.4f));
+		model = glm::translate(model, glm::vec3(17.0f, 1.5f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));//tunel
+		Man1.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		model = glm::translate(model, glm::vec3(9.0f, 0.5f, 10.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Man1.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		model = glm::translate(model, glm::vec3(10.0f, 0.5f, 25.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Man1.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		model = glm::translate(model, glm::vec3(5.0f, 0.5f, 38.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Man1.Draw(lightingShader);
+
+
+		model = glm::mat4(1);
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		model = glm::translate(model, glm::vec3(8.0f,0.5f, -12.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Cow.Draw(lightingShader);
 
-		//model = glm::mat4(1);
-		////model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
-		//model = glm::translate(model, glm::vec3(-50.0f, -5.0f, 18.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Torre.Draw(lightingShader);
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(12.0f, 0.0f, 19.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		sheep.Draw(lightingShader);
 
 		model = glm::mat4(1);
 		model = glm::scale(model, glm::vec3(0.2f,0.2f,0.2f));
 		model = glm::translate(model, glm::vec3(0.0f, 1.0f, 2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Rex.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(0.0f, 2.0f, 29.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Tree.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(9.0f, 2.0f, -29.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Tree.Draw(lightingShader);
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(10.0f, 2.0f, -2.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Tree.Draw(lightingShader);
+
+
+		model = glm::mat4(1);
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		model = glm::translate(model, glm::vec3(-15.0f, 2.0f, -18.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Tree.Draw(lightingShader);
+
+		//model = glm::mat4(1);
+		//model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		///*model = glm::translate(model, glm::vec3(-15.0f, 2.0f, -18.0f));*/
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//Jeep.Draw(lightingShader);
+
+
+
 
 		//Piso
 		view = camera.GetViewMatrix();
@@ -478,41 +528,6 @@ int main()
 		model = glm::scale(model, glm::vec3(0.099f, 0.02f, 0.099f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Piso.Draw(lightingShader);
-	
-		//  ******************************************** Pterodactilo ***************************
-		//offsetZmur3 += 2.0 * deltaTime;
-		//posXmur3 = 50 * sin(offsetZmur3 * toRadians);
-		//posYmur3 = sin(offsetYmur2 * toRadians);
-
-		//posXmur3 = (float)(40 * cos(offsetZmur3 * toRadians)); //calculo de x
-		//posZmur3 = (float)(20 * sin(offsetZmur3 * toRadians)); //calculo de y 
-
-		//glm::vec3 despMurcielago3 = glm::vec3(posXmur3, 0.0f, posZmur3);
-		//glm::vec3 posMurcielago3 = glm::vec3(30.0f, 100.0f, -80.0f) + despMurcielago3;
-		//model = glm::mat4(1);
-		//model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-		//model = glm::translate(model, posMurcielago3);
-		//modelAux = model;
-		//model = glm::rotate(model, (45) * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//MurCuerpo_M.Draw(lightingShader);
-
-		//model = glm::mat4(1);
-		//model = modelAux;
-		//model = glm::rotate(model, (45 + posYmur3 * 10) * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(0.0f, 7.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//ala1.Draw(lightingShader);
-
-		//model = glm::mat4(1);
-		//model = modelAux;
-		//model = glm::rotate(model, (45 + posYmur3 * 10) * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
-		//model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(0.0f, 7.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//ala2.Draw(lightingShader);
 
 
 		// Also draw the lamp object, again binding the appropriate shader
@@ -529,7 +544,7 @@ int main()
 		model = glm::mat4(1);
 		model = glm::translate(model, glm::vec3(0.0f,0.1f,0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Jeep.Draw(lampShader);
+		
 		glBindVertexArray(0);
 
 		// Set matrices
