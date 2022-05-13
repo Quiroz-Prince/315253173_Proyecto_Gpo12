@@ -466,7 +466,7 @@ int main()
 
 		model = glm::mat4(1);
 		model = glm::scale(model, glm::vec3(0.2f,0.2f,0.2f));
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 1.0f, 2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Rex.Draw(lightingShader);
 
