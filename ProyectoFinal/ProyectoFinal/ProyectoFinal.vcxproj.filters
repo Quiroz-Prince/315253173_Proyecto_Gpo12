@@ -15,8 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnimacionSencilla.cpp">
+    <ClCompile Include="315253173_ProyectoFinal_Gpo12.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\lamp.frag">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\lamp.vs">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\lamp2.frag">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\lamp2.vs">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\lighting.frag">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\lighting.vs">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
   </ItemGroup>
 </Project>
